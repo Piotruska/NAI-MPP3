@@ -27,7 +27,7 @@ public class Layer
         {
             if (!l.Contains(x.Item2))
             {
-                _perceptrons.Add(new Perceptron(("Perceptron - "+x.Item2),x.Item2,x.Item1.Length,0.5));
+                _perceptrons.Add(new Perceptron(("Perceptron - "+x.Item2),x.Item2,x.Item1.Length,_learningRate));
                 Console.WriteLine("Perceptron - "+x.Item2 + " Created");
                 l.Add(x.Item2);
                 _numberOfPreceptrons++;
@@ -97,5 +97,14 @@ public class Layer
             return _perceptrons[index].PositiveValue;
         }
         
+    }
+
+    public void updatevalues(double learningRate, double _errorRate)
+    {
+        _errorThreashold = _errorRate;
+        foreach (var p in _perceptrons)
+        {
+            p.learningRate = learningRate;
+        }
     }
 }

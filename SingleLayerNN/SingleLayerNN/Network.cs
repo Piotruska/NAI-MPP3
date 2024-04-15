@@ -8,8 +8,8 @@ public class Network
     public List<(double[], string)> _testData = new ();
     public string _trainDataFilePath = "";
     public string _testDataFilePath = "";
-    public double _learningRate = 0.5;
-    public double _errorRate = 0.5;
+    public double _learningRate;
+    public double _errorRate;
 
     public void set_trainDataFilePath(string trainDataFilePath)
     {
@@ -24,6 +24,11 @@ public class Network
     public void updateValues(double learningRate,double _errorRate)
     {
         _learningRate = learningRate;
+        this._errorRate = _errorRate;
+        foreach (var l in _layers)
+        {
+            l.updatevalues(learningRate,_errorRate);
+        }
     }
     public void GetDataFromFiles()
     {

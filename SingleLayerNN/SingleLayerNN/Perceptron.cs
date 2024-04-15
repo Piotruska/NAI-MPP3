@@ -8,7 +8,7 @@ public class Perceptron
     public string PositiveValue { get; private set; }
     private double[] weightVector;
     private double bias;
-    private double learningRate;
+    public double learningRate;
     private int vectorLength;
 
     public Perceptron(string name, string positiveValue, int vectorLength, double learningRate)

@@ -19,6 +19,8 @@ public class Program
     public static void Main(string[] args)
     {
         InitializeNetwork();
+        network._learningRate = 0.1;  
+        network._errorRate = 0.05;  
         bool exitApp = false;
         while (!exitApp)
         {
@@ -62,8 +64,6 @@ public class Program
         network._fileReader = new FileReader();
         network._trainDataFilePath = "C:\\Users\\piotr\\Desktop\\GitHub\\NAI\\NAI-MPP3\\SingleLayerNN\\SingleLayerNN\\lang.train.csv";  
         network._testDataFilePath = "C:\\Users\\piotr\\Desktop\\GitHub\\NAI\\NAI-MPP3\\SingleLayerNN\\SingleLayerNN\\lang.test.csv";
-        network._learningRate = 0.1;  
-        network._errorRate = 0.05;  
         network.GetDataFromFiles();
         network.IniciateNetworkLayers();
     }
@@ -86,7 +86,7 @@ public class Program
         Console.Write($"Enter new learning rate (current: {network._learningRate:N2}): ");
         if (double.TryParse(Console.ReadLine(), out double newLearningRate))
         {
-            network._learningRate = newLearningRate;
+            
         }
         else
         {
@@ -96,11 +96,13 @@ public class Program
         Console.Write($"Enter new error threshold (current: {network._errorRate:N2}): ");
         if (double.TryParse(Console.ReadLine(), out double newErrorThreshold))
         {
-            network._errorRate = newErrorThreshold;
+            
         }
         else
         {
             Console.WriteLine("Invalid input for error threshold.");
         }
+
+        network.updateValues(newLearningRate,newErrorThreshold);
     }
 }
