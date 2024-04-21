@@ -11,14 +11,11 @@ public class Network
     public double _learningRate;
     public double _errorRate;
 
-    public void set_trainDataFilePath(string trainDataFilePath)
+    public Network(){}
+    public Network(double learningRate, double errorRate)
     {
-        _trainDataFilePath = trainDataFilePath;
-    }
-    
-    public void set_testDataFilePath(string testDataFileName)
-    {
-        _testDataFilePath = testDataFileName;
+        _learningRate = learningRate;
+        _errorRate = errorRate;
     }
 
     public void updateValues(double learningRate,double _errorRate)

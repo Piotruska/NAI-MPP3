@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices.JavaScript;
 
 namespace SingleLayerNN;
 
@@ -10,6 +11,7 @@ public class Perceptron
     private double bias;
     public double learningRate;
     private int vectorLength;
+    private JSType.Function activationFunction;
 
     public Perceptron(string name, string positiveValue, int vectorLength, double learningRate)
     {

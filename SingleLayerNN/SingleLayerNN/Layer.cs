@@ -13,10 +13,11 @@ public class Layer
 
     public Layer(string name,List<(double[], string)> trainingData, List<(double[], string)> testData,double errorThreashold,double learningRate)
     {
-        this.Name = name;
+        Name = name;
         _trainingData = trainingData;
         _testData = testData;
         _errorThreashold = errorThreashold;
+        _learningRate = learningRate;
 
     }
     
@@ -39,7 +40,9 @@ public class Layer
 
     public void TrainPerceptrons()
     {
-        while (!TestError())
+        int countEpoch = 0;
+        bool flag = true;
+        while (flag)
         {
             foreach (var x in _trainingData)
             {
@@ -48,6 +51,14 @@ public class Layer
                     p.Train(x);
                 }
             }
+            countEpoch++;
+            flag = !TestError();
+            if (countEpoch == 200)
+            {
+                flag = false;
+            }
+
+
         }
         
         

@@ -13,7 +13,7 @@ using SingleLayerNN;  // Ensure this namespace includes the Network, Layer, and 
 
 public class Program
 {
-    private static Network network = new Network();
+    private static Network network = new Network(0.1,0.05);
     private static FileReader fileReader = new FileReader();
 
     public static void Main(string[] args)
@@ -45,7 +45,7 @@ public class Program
                     ChangeLearningRateAndErrorThreshold();
                     break;
                 case "4":
-                    network = new Network();
+                    network = new Network(network._learningRate,network._errorRate);
                     InitializeNetwork();
                     break;
                 case "5": exitApp = true;
